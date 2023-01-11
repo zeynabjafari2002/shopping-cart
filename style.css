@@ -1,0 +1,182 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+:root{
+    --color1:#CCF381;
+    --color2:#4831D4;
+}
+.shoppingCartContainer{
+    width: 40%;
+    background-color: var(--color1);
+    height: 100vh ;
+    padding:80px 20px;
+    float: right;
+    color: var(--color2);
+    transition:width 1s ease-in-out ;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index:1;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+.shoppingCartContainer i{
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+.title{
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,250px 120px 120px);
+    gap: 5px;
+}
+.title h4{
+    border-bottom: 1px solid var(--color2);
+    width: 100%;
+    padding: 2px;
+}
+.price h4{
+    text-align: left;
+}
+.price{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+.purchase{
+    border: none;
+    outline: none;
+    padding: 5px 8px;
+    background-color: var(--color2);
+    color: var(--color1);
+    margin-top: 50px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+/* mainSection */
+.mainSection{
+    width: 100%;
+}
+.mainSection i{
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+    margin:80px 20px;
+    color: var(--color2);
+    
+}
+.mainSection h1{
+    font-size: 60px;
+    text-transform: uppercase;
+    background-color: var(--color2);
+    color: var(--color1);
+    border-radius: 0px 0px 100% 0px;
+    padding: 50px;
+}
+
+/* books container */
+.productsList{
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    align-content: center;
+}
+.bookContainer{
+    margin-top: 40px;
+    box-shadow: var(--color2) 1px 3px 5px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    height: 350px;
+}
+.bookSrc{
+    width: 150px;
+}
+.bookName{
+    text-align: center;
+    width: 120px;
+    margin: auto;
+    color: var(--color2);
+}
+.bookPrice{
+    color: gray;
+    font-size: 12px;
+    color: var(--color2);
+}
+.basketBtn{
+    text-transform: capitalize;
+    padding: 7px 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--color2);
+    color: var(--color1);
+    transition: 0.2s ease-out;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-left: 13%;
+    bottom: -7%;
+    position: relative;
+}
+.basketBtn:hover{
+    color: var(--color2);
+    background-color: var(--color1);
+}
+
+
+
+/* set book in basket */
+.products{
+    width: 100%;
+}
+.productBasketContainer{
+    border-bottom: var(--color2) 1px solid;
+    display: grid;
+    grid-template-columns: repeat(4,250px 120px 40px  60px);
+    padding-bottom: 10px;
+    width: 100%;
+    gap: 5px;
+}
+.srcNameContainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+.srcNameContainer img{
+    width: 80px;
+    padding-right: 10px;
+}
+.products input{
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    border: none;
+    color: var(--color2);
+    background-color: var(--color1);
+    margin-left: 15px;
+}
+.products .price{
+    padding: 10px 0px 0px 10px;
+}
+.products .removeBtn{
+    width: 55px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: var(--color1);
+    cursor: pointer;
+    height: 20px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
