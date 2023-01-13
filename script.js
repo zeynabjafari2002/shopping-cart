@@ -19,31 +19,38 @@ const bookList=[
 let productsList=$.querySelector('.productsList')
 bookList.forEach(
     function (product){
-        let productContainer=$.createElement('div')
-        productContainer.classList.add('bookContainer')
+        // basic method of creating element
+        // let productContainer=$.createElement('div')
+        // productContainer.classList.add('bookContainer')
 
-        let productImgElem=$.createElement('img')
-        productImgElem.setAttribute('src' , product.url)
-        productImgElem.classList.add('bookSrc')
+        // let productImgElem=$.createElement('img')
+        // productImgElem.setAttribute('src' , product.url)
+        // productImgElem.classList.add('bookSrc')
 
-        let productTitle=$.createElement('p')
-        productTitle.innerHTML=product.name
-        productTitle.classList.add('bookName')
+        // let productTitle=$.createElement('p')
+        // productTitle.innerHTML=product.name
+        // productTitle.classList.add('bookName')
 
-        let productPriceElem=$.createElement('p')
-        productPriceElem.classList.add('bookPrice')
-        productPriceElem.innerHTML=product.price
+        // let productPriceElem=$.createElement('p')
+        // productPriceElem.classList.add('bookPrice')
+        // productPriceElem.innerHTML=product.price
 
-        let productAddBtn=$.createElement('button')
-        productAddBtn.innerHTML='add to basket'
-        productAddBtn.classList.add('basketBtn')
+        // let productAddBtn=$.createElement('button')
+        // productAddBtn.innerHTML='add to basket'
+        // productAddBtn.classList.add('basketBtn')
         
-        productAddBtn.addEventListener('click' , ()=>{
-            addProductToBasketArray(product.id)
-        })
+        // productAddBtn.addEventListener('click' , ()=>{
+        //     addProductToBasketArray(product.id)
+        // })
 
-        productContainer.append(productImgElem , productTitle , productPriceElem , productAddBtn)
-        productsList.append(productContainer)
+        // productContainer.append(productImgElem , productTitle , productPriceElem , productAddBtn)
+        // productsList.append(productContainer)
+
+
+        // advanced method of creating element
+        productsList.insertAdjacentHTML('beforeend' ,
+            '<div class="bookContainer"><img src=" '+product.url+' " class="bookSrc"><p class="bookName">'+product.name+'</p><p class="bookPrice">'+product.price+'</p><button onclick="addProductToBasketArray('+product.id+')" class="basketBtn">add to basket</button></div>'
+        )
     }
 )
 
@@ -64,43 +71,50 @@ function basketProductGenerator(userBasketArray){
     BasketProductsContainers.innerHTML=''
     userBasketArray.forEach(
         function (product){
-            let basketProductContainer=$.createElement('div')
-            basketProductContainer.classList.add('productBasketContainer')
+            // basic method of creating element
+            // let basketProductContainer=$.createElement('div')
+            // basketProductContainer.classList.add('productBasketContainer')
 
-            let srcNameContainer=$.createElement('div')
-            srcNameContainer.classList.add('srcNameContainer')
+            // let srcNameContainer=$.createElement('div')
+            // srcNameContainer.classList.add('srcNameContainer')
 
-            let basketProductImg=$.createElement('img')
-            basketProductImg.setAttribute('src' , product.url)
+            // let basketProductImg=$.createElement('img')
+            // basketProductImg.setAttribute('src' , product.url)
 
-            let basketProductName=$.createElement('p')
-            basketProductName.innerHTML=product.name
+            // let basketProductName=$.createElement('p')
+            // basketProductName.innerHTML=product.name
 
-            let basketProductPrice=$.createElement('p')
-            basketProductPrice.innerHTML=product.price
-            basketProductPrice.classList.add('price')
+            // let basketProductPrice=$.createElement('p')
+            // basketProductPrice.innerHTML=product.price
+            // basketProductPrice.classList.add('price')
 
-            let basketProductInput=$.createElement('input')
-            basketProductInput.setAttribute('type' , 'number')
-            basketProductInput.value= product.quantity
+            // let basketProductInput=$.createElement('input')
+            // basketProductInput.setAttribute('type' , 'number')
+            // basketProductInput.value= product.quantity
 
-            basketProductInput.addEventListener('change' , ()=>{
-                updateProductQuantity(product.id , basketProductInput.value)
-            })
+            // basketProductInput.addEventListener('change' , ()=>{
+            //     updateProductQuantity(product.id , basketProductInput.value)
+            // })
 
-            let basketProductRemoveBtn=$.createElement('button')
-            basketProductRemoveBtn.classList.add('removeBtn')
-            basketProductRemoveBtn.innerHTML='remove'
+            // let basketProductRemoveBtn=$.createElement('button')
+            // basketProductRemoveBtn.classList.add('removeBtn')
+            // basketProductRemoveBtn.innerHTML='remove'
             
             // removing product from basket
-            basketProductRemoveBtn.addEventListener('click' , ()=>{
-                removeProductFromBasket(product.id)
-                calculatingTotalPrice(userBasket)
-            })
+            // basketProductRemoveBtn.addEventListener('click' , ()=>{
+            //     removeProductFromBasket(product.id)
+            //     calculatingTotalPrice(userBasket)
+            // })
 
-            srcNameContainer.append(basketProductImg , basketProductName)
-            basketProductContainer.append(srcNameContainer , basketProductPrice , basketProductInput , basketProductRemoveBtn)
-            BasketProductsContainers.append(basketProductContainer)
+            // srcNameContainer.append(basketProductImg , basketProductName)
+            // basketProductContainer.append(srcNameContainer , basketProductPrice , basketProductInput , basketProductRemoveBtn)
+            // BasketProductsContainers.append(basketProductContainer)
+
+
+
+            // advanced method of creating element
+            BasketProductsContainers.insertAdjacentHTML('afterbegin' , 
+            '<div class="products"><div class="productBasketContainer"><div class="srcNameContainer"><img src="'+product.url+'"><p>'+product.name+'</p></p></div><p class="price">'+product.price+'</p><input value=1 onchange="updateProductQuantity('+product.id+','+'value'+')" type="number"><button class="removeBtn" onclick="removeProductFromBasket('+product.id+')" onclick="calculatingTotalPrice('+userBasket+')">remove</button></div></div>')
         }
     )
 }
