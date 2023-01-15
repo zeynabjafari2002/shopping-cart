@@ -66,13 +66,13 @@ function addProductToBasketArray(productId){
     calculatingTotalPrice(userBasket)
 }
 
-let BasketProductsContainers=$.querySelector('.products')
+let basketProductsContainer=$.querySelector('.products')
 function basketProductGenerator(userBasketArray){
-    BasketProductsContainers.innerHTML=''
+    basketProductsContainer.innerHTML=''
     userBasketArray.forEach(
         function (product){
             // basic method of creating element
-            // let basketProductContainer=$.createElement('div')
+            // let basketProductContainers=$.createElement('div')
             // basketProductContainer.classList.add('productBasketContainer')
 
             // let srcNameContainer=$.createElement('div')
@@ -107,17 +107,19 @@ function basketProductGenerator(userBasketArray){
             // })
 
             // srcNameContainer.append(basketProductImg , basketProductName)
-            // basketProductContainer.append(srcNameContainer , basketProductPrice , basketProductInput , basketProductRemoveBtn)
-            // BasketProductsContainers.append(basketProductContainer)
+            // basketProductContainers.append(srcNameContainer , basketProductPrice , basketProductInput , basketProductRemoveBtn)
+            // basketProductsContainer.append(basketProductContainers)
 
 
 
             // advanced method of creating element
-            BasketProductsContainers.insertAdjacentHTML('afterbegin' , 
-            '<div class="products"><div class="productBasketContainer"><div class="srcNameContainer"><img src="'+product.url+'"><p>'+product.name+'</p></p></div><p class="price">'+product.price+'</p><input value=1 onchange="updateProductQuantity('+product.id+','+'value'+')" type="number"><button class="removeBtn" onclick="removeProductFromBasket('+product.id+')" onclick="calculatingTotalPrice('+userBasket+')">remove</button></div></div>')
+            basketProductsContainer.insertAdjacentHTML('afterbegin' , 
+            '<div class="products"><div class="productBasketContainer"><div class="srcNameContainer"><img src="'+product.url+'"><p>'+product.name+'</p></p></div><p class="price">'+product.price+'</p><input value=1 onchange="updateProductQuantity('+product.id+','+'value'+')" type="number"><button class="removeBtn" onclick="removeProductFromBasket('+product.id+')" >remove</button></div></div>')
         }
     )
 }
+
+
 
 
 // open basket product
@@ -141,6 +143,7 @@ function removeProductFromBasket(productId){
         }
     )
     basketProductGenerator(userBasket)
+    calculatingTotalPrice(userBasket)
 }
 
 
@@ -149,6 +152,7 @@ let purchase=$.querySelector('.purchase')
 purchase.addEventListener('click' , ()=>{
     userBasket=[]
     basketProductGenerator(userBasket)
+    calculatingTotalPrice(userBasket)
 })
 
 
